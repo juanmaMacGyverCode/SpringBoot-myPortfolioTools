@@ -16,11 +16,6 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                /*withCredentials([file(credentialsId: 'HOST_KEY', variable: 'hostKey'),
-                                 file(credentialsId: 'TOKEN_LOGIN', variable: 'tokenLogin')]) {
-                   sh "cp \$my-public-key /src/main/resources/my-public-key.der"
-                   sh "cp \$my-private-key /src/main/resources/my-private-key.der"
-                }*/
                 withSonarQubeEnv('sonarQubeMyPortfolio') {
                     sh './gradlew sonarqube'
                 }
