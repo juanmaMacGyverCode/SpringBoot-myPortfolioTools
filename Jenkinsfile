@@ -14,6 +14,13 @@ pipeline {
                 sh "./gradlew test"
             }
         }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('sonarQubeMyPortfolio') {
+                    sh './gradlew sonarqube'
+                }
+            }
+        }
         stage ("Package") {
             steps {
         	    sh "./gradlew build"
