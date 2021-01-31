@@ -17,7 +17,12 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarQubeMyPortfolio') {
-                    sh './gradlew sonarqube'
+                    sh './gradlew sonarqube \
+                          -Dsonar.projectKey=SpringBoot-myPortfolioTools \
+                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.login=fd7c6d802ee7496590b02454ef23014b6368894f \
+                          -Dsonar.user=matestodolocura \
+                          -Dsonar.password=matestodolocura'
                 }
             }
         }
