@@ -16,11 +16,13 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
+                /*withCredentials([file(credentialsId: 'HOST_KEY', variable: 'hostKey'),
+                                 file(credentialsId: 'TOKEN_LOGIN', variable: 'tokenLogin')]) {
+                   sh "cp \$my-public-key /src/main/resources/my-public-key.der"
+                   sh "cp \$my-private-key /src/main/resources/my-private-key.der"
+                }*/
                 withSonarQubeEnv('sonarQubeMyPortfolio') {
-                    sh './gradlew sonarqube \
-                          -Dsonar.projectKey=SpringBoot-myPortfolioTools \
-                          -Dsonar.host.url=http://sonarQubeMyPortfolio:9000 \
-                          -Dsonar.login=fd7c6d802ee7496590b02454ef23014b6368894f'
+                    sh './gradlew sonarqube'
                 }
             }
         }
