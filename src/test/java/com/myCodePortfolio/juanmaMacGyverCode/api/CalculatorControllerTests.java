@@ -2,6 +2,7 @@ package com.myCodePortfolio.juanmaMacGyverCode.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myCodePortfolio.juanmaMacGyverCode.application.dto.DtoTwoNumbers;
+import com.myCodePortfolio.juanmaMacGyverCode.domain.actions.CalculatorAction;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,6 +25,9 @@ class CalculatorControllerTests {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private CalculatorAction calculatorAction;
+
     @Test
     void add_with_two_numbers() throws Exception {
 
@@ -41,5 +45,15 @@ class CalculatorControllerTests {
 
         String result = response.getContentAsString();
         assertThat(result).isEqualTo("3");
+    }
+
+    @Test
+    void testingAddAction(){
+        DtoTwoNumbers dtoTwoNumbers = DtoTwoNumbers.builder()
+                .number1("1")
+                .number2("2")
+                .build();
+
+        assertThat(calculatorAction.add(dtoTwoNumbers)).isEqualTo("3");
     }
 }
