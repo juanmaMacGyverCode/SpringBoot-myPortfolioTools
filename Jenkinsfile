@@ -27,7 +27,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarQubeMyPortfolio') {
+                withSonarQubeEnv('SonarQube-CICD-Completo') {
                     sh './gradlew sonarqube'
                 }
             }
