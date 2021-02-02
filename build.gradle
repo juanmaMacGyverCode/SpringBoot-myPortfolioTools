@@ -48,3 +48,23 @@ jacocoTestReport {
 		xml.enabled true
 	}
 }
+
+/*sonarqube {
+	properties {
+		property("sonar.host.url", "http://localhost:9000")
+		property("sonar.sources", "src/main/")
+		property("sonar.tests", "src/test/")
+		property("sonar.exclusions", "src/generated/")
+		property("sonar.jacoco.reportPath", "build/jacoco/test.exec")
+		property("sonar.junit.reportsPath","build/test-results/test")
+		property("sonar.core.codeCoveragePlugin","jacoco")
+		property("sonar.verbose", "true")
+		property("sonar.binaries" ,"build/classes/java")
+		property("sonar.java.binaries" ,"build/classes/java")
+		property("sonar.dynamicAnalysis", "reuseReports")
+	}
+}
+
+plugins.withType(JacocoPlugin) {
+	tasks["test"].finalizedBy 'jacocoTestReport'
+}*/
