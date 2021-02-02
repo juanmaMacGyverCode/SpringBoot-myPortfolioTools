@@ -49,7 +49,7 @@ jacocoTestReport {
 	}
 }
 
-/*sonarqube {
+sonarqube {
 	properties {
 		property("sonar.host.url", "http://localhost:9000")
 		property("sonar.sources", "src/main/")
@@ -67,4 +67,4 @@ jacocoTestReport {
 
 plugins.withType(JacocoPlugin) {
 	tasks["test"].finalizedBy 'jacocoTestReport'
-}*/
+}
