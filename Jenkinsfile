@@ -42,5 +42,18 @@ pipeline {
                 sh "docker version"
             }
         }
+        stage ("Docker login") {
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DOCKER-CREDENTIALS',
+                usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                    sh "docker login --username $USERNAME --password $PASSWORD"
+                }
+            }
+        }
+    }
+    post {
+        always {
+             sh "docker stop calculatorStaging"
+        }
     }
 }
