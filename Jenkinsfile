@@ -53,7 +53,7 @@ pipeline {
     }
     post {
         always {
-             sh "docker stop calculatorStaging"
+             sh "docker logout juanmamacgyvercode"
         }
     }
 }
